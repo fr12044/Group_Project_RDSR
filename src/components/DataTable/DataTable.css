@@ -1,0 +1,19 @@
+.data-table {
+    display: grid;
+    gap: 10px;
+}
+
+.data-table__title {
+    margin: 0;
+}
+
+.data-table__table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table__head, .data-table__cell {
+    border: 1px solid #999;
+    padding: 10px;
+    text-align: left;
+}
