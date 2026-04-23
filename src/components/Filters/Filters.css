@@ -1,0 +1,19 @@
+.filters {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.filters__item {
+    display: grid;
+    gap: 8px;
+}
+
+.filters__label {
+    margin: 0;
+}
+
+.filters__input, .filters__select {
+    padding: 8px;
+    border: 1px solid #999;
+}
