@@ -33,6 +33,50 @@ function useDashboard(products) {
         filteredProducts = [...filteredProducts].sort((a, b) => b.stock - a.stock)
     }
 
+    const totalProducts = products.length
+    const filteredCount = filteredProducts.length
+
+    const averagePrice =
+        filteredProducts.length > 0
+            ? (
+                filteredProducts.reduce((sum, item) => sum + item.price, 0) /
+                filteredProducts.length
+            ).toFixed(2)
+            : 0
+
+    const totalStock = filteredProducts.reduce((sum, item) => sum + item.stock, 0)
+
+    const countByCategory = {}
+    const stockByCategory = {}
+
+    filteredProducts.forEach((item) => {
+        if (countByCategory[item.category]) {
+            countByCategory[item.category] += 1
+        } else {
+            countByCategory[item.category] = 1
+        }
+
+        if (stockByCategory[item.category]) {
+            stockByCategory[item.category] += item.stock
+        } else {
+            stockByCategory[item.category] = item.stock
+        }
+    })
+
+    const categoryChartData = Object.keys(countByCategory).map((key) => {
+        return {
+            category: key,
+            count: countByCategory[key]
+        }
+    })
+
+    const stockChartData = Object.keys(stockByCategory).map((key) => {
+        return {
+            category: key,
+            stock: stockByCategory[key]
+        }
+    })
+
     return {
         search,
         setSearch,
@@ -41,7 +85,13 @@ function useDashboard(products) {
         sortBy,
         setSortBy,
         categories,
-        filteredProducts
+        filteredProducts,
+        totalProducts,
+        filteredCount,
+        averagePrice,
+        totalStock,
+        categoryChartData,
+        stockChartData
     }
 }
 
