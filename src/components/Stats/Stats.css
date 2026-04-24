@@ -1,0 +1,16 @@
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.stats__card {
+    border: 1px solid #999;
+    padding: 15px;
+    display: grid;
+    gap: 8px;
+}
+
+.stats__label, .stats__value {
+    margin: 0;
+}
