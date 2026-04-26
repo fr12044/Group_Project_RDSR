@@ -1,0 +1,19 @@
+.charts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.charts__item {
+    display: grid;
+    gap: 10px;
+}
+
+.charts__title {
+    margin: 0;
+}
+
+.charts__box {
+    border: 1px solid #999;
+    padding: 10px;
+}
