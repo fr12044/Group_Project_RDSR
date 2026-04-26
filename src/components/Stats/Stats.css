@@ -1,16 +1,93 @@
 .stats {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 14px;
 }
 
 .stats__card {
-    border: 1px solid #999;
-    padding: 15px;
     display: grid;
-    gap: 8px;
+    gap: 14px;
+    min-height: 122px;
+    padding: 16px;
+    border: 1px solid #eceef5;
+    border-radius: 12px;
+    background: #ffffff;
 }
 
-.stats__label, .stats__value {
+.stats__card--peach {
+    background: #fff4eb;
+}
+
+.stats__card--mint {
+    background: #f4faee;
+}
+
+.stats__card--blue {
+    background: #f1f6ff;
+}
+
+.stats__card--teal {
+    background: #eefbfb;
+}
+
+.stats__card--rose {
+    background: #fff3f5;
+}
+
+.stats__label,
+.stats__value,
+.stats__delta {
     margin: 0;
+}
+
+.stats__label {
+    color: #646d80;
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+.stats__value {
+    color: #17181f;
+    font-size: 1.85rem;
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+.stats__footer {
+    display: flex;
+    align-items: center;
+}
+
+.stats__delta {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.8);
+    color: #15a26b;
+    font-size: 0.74rem;
+    font-weight: 700;
+}
+
+.stats__delta--down {
+    color: #f04f69;
+}
+
+@media (max-width: 1200px) {
+    .stats {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 780px) {
+    .stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 560px) {
+    .stats {
+        grid-template-columns: 1fr;
+    }
 }

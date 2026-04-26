@@ -7,35 +7,70 @@ function Filters({
     setCategory,
     sortBy,
     setSortBy,
-    categories
+    categories,
+    activeFilterCount,
+    onReset
 }) {
     return (
         <div className="filters">
-            <div className="filters__item">
-                <p className="filters__label">Search by title</p>
-                <input className="filters__input" type="text" value={search} onChange={(e) => setSearch(e.target.value)}/>
+            <div className="filters__header">
+                <div className="filters__intro">
+                    <p className="filters__eyebrow">Controls</p>
+                    <h2 className="filters__title">Refine dashboard data</h2>
+                </div>
+
+                <div className="filters__actions">
+                    <p className="filters__badge">{activeFilterCount} active</p>
+                    <button className="filters__reset" type="button" onClick={onReset}>
+                        Reset filters
+                    </button>
+                </div>
             </div>
 
-            <div className="filters__item">
-                <p className="filters__label">Category</p>
-                <select className="filters__select" value={category} onChange={(e) => setCategory(e.target.value)}>
-                    <option value="all">All</option>
-                    {categories.map((item, index) => (
-                        <option key={index} value={item}>{item}</option>
-                    ))}
-                </select>
-            </div>
+            <div className="filters__grid">
+                <label className="filters__item" htmlFor="search">
+                    <span className="filters__label">Keyword</span>
+                    <input
+                        className="filters__input"
+                        id="search"
+                        type="text"
+                        placeholder="Search products"
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                    />
+                </label>
 
-            <div className="filters__item">
-                <p className="filters__label">Sort by</p>
-                <select className="filters__select" value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-                    <option value="default">Default</option>
-                    <option value="title">Title</option>
-                    <option value="price-low">Price low to high</option>
-                    <option value="price-high">Price high to low</option>
-                    <option value="rating">Rating</option>
-                    <option value="stock">Stock</option>
-                </select>
+                <label className="filters__item" htmlFor="category">
+                    <span className="filters__label">Category</span>
+                    <select
+                        className="filters__select"
+                        id="category"
+                        value={category}
+                        onChange={(e) => setCategory(e.target.value)}
+                    >
+                        <option value="all">All</option>
+                        {categories.map((item) => (
+                            <option key={item} value={item}>{item}</option>
+                        ))}
+                    </select>
+                </label>
+
+                <label className="filters__item" htmlFor="sortBy">
+                    <span className="filters__label">Sort order</span>
+                    <select
+                        className="filters__select"
+                        id="sortBy"
+                        value={sortBy}
+                        onChange={(e) => setSortBy(e.target.value)}
+                    >
+                        <option value="default">Default</option>
+                        <option value="title">Title</option>
+                        <option value="price-low">Price low to high</option>
+                        <option value="price-high">Price high to low</option>
+                        <option value="rating">Rating</option>
+                        <option value="stock">Stock</option>
+                    </select>
+                </label>
             </div>
         </div>
     )
