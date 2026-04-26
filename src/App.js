@@ -4,6 +4,7 @@ import useDashboard from './hooks/useDashboard';
 import Filters from './components/Filters/Filters';
 import Stats from './components/Stats/Stats';
 import DataTable from './components/DataTable/DataTable';
+import Charts from './components/Charts/Charts';
 
 function App() {
   const { products, loading, error } = useProducts()
@@ -20,7 +21,9 @@ function App() {
     totalProducts,
     filteredCount,
     averagePrice,
-    totalStock
+    totalStock,
+    categoryChartData,
+    stockChartData
   } = useDashboard(products)
 
   return (
@@ -38,6 +41,10 @@ function App() {
 
           <div className="app__section">
             <Stats totalProducts={totalProducts} filteredCount={filteredCount} averagePrice={averagePrice} totalStock={totalStock} />
+          </div>
+
+          <div className="app__section">
+            <Charts categoryChartData={categoryChartData} stockChartData={stockChartData} />
           </div>
 
           <div className="app__section">
